@@ -57,7 +57,6 @@ public class MainPage extends BasePage{
         for (MenuItem menuItem : menuItems){
             menuItem.btn.click();
             softAssert.assertTrue(menuItem.page.verifyPage());
-            System.out.println(menuItem.page.verifyPage());
         }
         softAssert.assertAll();
     }

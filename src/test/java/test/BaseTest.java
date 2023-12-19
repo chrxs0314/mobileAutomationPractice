@@ -3,16 +3,20 @@ package test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import EmailGenerator.EmailPage;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 import pages.MainPage;
 
 
@@ -43,6 +47,8 @@ public class BaseTest {
     }
 
     public MainPage getMainPage(){return new MainPage(driver);}
+    public LoginPage getLoginPage(){return new LoginPage(driver);}
+
 
 
     @AfterClass

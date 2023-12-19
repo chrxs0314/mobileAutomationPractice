@@ -4,6 +4,7 @@
         <classes>
             <class name="test.BaseTest" />
             <class name="test.MainPageTest" />
+            <class name="test.RegisterTest" />
         </classes>
     </test>
 </suite>
