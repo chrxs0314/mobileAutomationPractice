@@ -9,35 +9,57 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.asserts.SoftAssert;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class MainPage extends BasePage{
-    @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Drag\")")
-    WebElement btnDrag;
+    class MenuItem{
+        WebElement btn;
+        BasePage page;
+
+        MenuItem(WebElement btn, BasePage page){
+            this.btn = btn;
+            this.page = page;
+        }
+    }
+    @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Home\")")
+    WebElement btnHome;
+    @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Webview\")")
+    WebElement btnWebview;
     @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Login\")")
     WebElement btnLogin;
-    @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Drag-drop-screen\").childSelector(new UiSelector().text(\"Drag and Drop\"))")
-    WebElement titleDrag;
+    @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Forms\")")
+    WebElement btnForms;
+    @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Swipe\")")
+    WebElement btnSwipe;
+    @AndroidFindBy(uiAutomator = "new UiSelector().descriptionContains(\"Drag\")")
+    WebElement btnDrag;
 
+    HomePage homePage = new HomePage(driver);
+    WebviewPage webviewPage = new WebviewPage(driver);
+    LoginPage loginPage = new LoginPage(driver);
+    FormsPage formsPage = new FormsPage(driver);
+    SwipePage swipePage = new SwipePage(driver);
+    DragPage dragPage = new DragPage(driver);
 
-    SoftAssert softAssert = new SoftAssert();
+    List<MenuItem> menuItems = Arrays.asList(
+            new MenuItem(btnHome,homePage),
+            new MenuItem(btnWebview,webviewPage),
+            new MenuItem(btnLogin,loginPage),
+            new MenuItem(btnForms,formsPage),
+            new MenuItem(btnSwipe,swipePage),
+            new MenuItem(btnDrag,dragPage)
+    );
 
-    public void clickOnLogin(){
-
-    }
-
-    public void clickOnDrag(){
-        softAssert.assertTrue(isElementDisplayed(btnDrag));
-        btnDrag.click();
-        softAssert.assertTrue(isElementDisplayed(titleDrag));
+    public void clickOnItemMenu(){
+        for (MenuItem menuItem : menuItems){
+            menuItem.btn.click();
+            softAssert.assertTrue(menuItem.page.verifyPage());
+            System.out.println(menuItem.page.verifyPage());
+        }
         softAssert.assertAll();
-//        if(isElementDisplayed(btnDrag)){
-//            btnDrag.click();
-//            if(isElementDisplayed(titleDrag)){
-//                System.out.println("Titulo encontrado con exito");
-//
-//            }
-//        }else{
-//            System.out.println("No acepta el elemento btnDrag");
-//        }
     }
 
     public MainPage(AndroidDriver driver) {
