@@ -5,7 +5,8 @@
             <class name="test.BaseTest" />
 <!--            <class name="test.MainPageTest" />-->
 <!--            <class name="test.RegisterTest" />-->
-            <class name="test.LoginTest"/>
+<!--            <class name="test.LoginTest"/>-->
+                <class name="test.SwipeTest"/>
         </classes>
     </test>
 </suite>

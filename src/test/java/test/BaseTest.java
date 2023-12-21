@@ -2,10 +2,14 @@ package test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 
 import EmailGenerator.EmailPage;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 
@@ -13,11 +17,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.MainPage;
+import pages.SwipePage;
 
 
 public class BaseTest {
@@ -47,7 +54,7 @@ public class BaseTest {
 
     public MainPage getMainPage(){return new MainPage(driver);}
     public LoginPage getLoginPage(){return new LoginPage(driver);}
-
+    public SwipePage getSwipePage(){return new SwipePage(driver);}
 
 
     @AfterClass
