@@ -23,7 +23,6 @@ import pages.MainPage;
 public class BaseTest {
     private AndroidDriver driver;
 
-
     @BeforeClass
     public void setUp() {
 
